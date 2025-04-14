@@ -3,6 +3,7 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { API_ENDPOINTS } from "../config/api";
+import toast, { Toaster } from "react-hot-toast";
 
 const JoinUsPage = () => {
   const [formData, setFormData] = useState({
@@ -21,9 +22,7 @@ const JoinUsPage = () => {
 
   const [selectedImages, setSelectedImages] = useState([]);
   const [previewImages, setPreviewImages] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const serviceTypes = [
     "Fundi Umeme",
@@ -87,7 +86,9 @@ const JoinUsPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setError(null);
+
+    // Show loading toast
+    const loadingToast = toast.loading("Inawasilisha fomu...");
 
     try {
       // Create FormData object to handle file uploads
@@ -110,8 +111,15 @@ const JoinUsPage = () => {
         },
       });
 
-      // Show success message
-      setSubmitted(true);
+      // Show success toast
+      toast.success("Asante kwa kujisajili! Karibu nasi.", {
+        duration: 5000,
+        icon: "👍",
+        style: {
+          background: "#10B981",
+          color: "#FFFFFF",
+        },
+      });
 
       // Reset form after submission
       setFormData({
@@ -130,19 +138,25 @@ const JoinUsPage = () => {
 
       setSelectedImages([]);
       setPreviewImages([]);
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
     } catch (error) {
       console.error("Error submitting form:", error);
-      setError(
+      // Show error toast
+      toast.error(
         error.response?.data?.message ||
           error.message ||
-          "Kuna tatizo limetokea wakati wa kuwasilisha fomu."
+          "Kuna tatizo limetokea wakati wa kuwasilisha fomu.",
+        {
+          duration: 5000,
+          icon: "❌",
+          style: {
+            background: "#EF4444",
+            color: "#FFFFFF",
+          },
+        }
       );
     } finally {
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
       setIsLoading(false);
     }
   };
@@ -151,6 +165,21 @@ const JoinUsPage = () => {
     <>
       <Navbar />
       <main className="bg-gray-50 py-12">
+        {/* Add Toaster component to render toast notifications */}
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          toastOptions={{
+            // Default options for all toasts
+            className: "",
+            style: {
+              padding: "16px",
+              borderRadius: "8px",
+              fontWeight: "500",
+            },
+          }}
+        />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
           <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16 px-8 rounded-xl mb-12 shadow-md">
@@ -245,21 +274,6 @@ const JoinUsPage = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Jiandikishe kama Mtoa Huduma
               </h2>
-
-              {submitted ? (
-                <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
-                  <p>
-                    Asante kwa kujisajili! Tutaangalia maombi yako na kuwasiliana nawe hivi
-                    karibuni.
-                  </p>
-                </div>
-              ) : null}
-
-              {error && (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-                  <p>{error}</p>
-                </div>
-              )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -582,7 +596,7 @@ const JoinUsPage = () => {
                 <div>
                   <button
                     type="submit"
-                    className={`w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors ${
+                    className={`w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors cursor-pointer ${
                       isLoading ? "opacity-70 cursor-not-allowed" : ""
                     }`}
                     disabled={isLoading}
