@@ -5,12 +5,13 @@ import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import fs from "fs";
 import providersRoutes from "./routes/providers.js";
+import reviewsRoutes from "./routes/reviews.js";
 
 // Initialize environment variables
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Create uploads directory if it doesn't exist
 const __filename = fileURLToPath(import.meta.url);
@@ -28,6 +29,7 @@ app.use("/uploads", express.static(uploadPath));
 
 // Routes
 app.use("/api/providers", providersRoutes);
+app.use("/api/reviews", reviewsRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

@@ -4,10 +4,21 @@
   "entries": [
     {
       "idx": 0,
-      "version": "5",
-      "when": 1744625399293,
-      "tag": "0000_strong_naoko",
-      "breakpoints": true
+      "version": "0000",
+      "when": 1686495729378,
+      "tag": "0000_initial"
+    },
+    {
+      "idx": 1,
+      "version": "0001",
+      "when": 1718455228694,
+      "tag": "0001_add_reviews"
+    },
+    {
+      "idx": 2,
+      "version": "0002",
+      "when": 1718456900000,
+      "tag": "0002_sudden_vengeance"
     }
   ]
 }

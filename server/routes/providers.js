@@ -61,9 +61,9 @@ router.get("/", async (req, res) => {
             id: img.id,
             imagePath: img.imagePath,
           })),
-          // Adding these fields for compatibility with the frontend
-          rating: 4.5, // Default rating, you could add a ratings table later
-          reviewCount: 10, // Default review count
+          // Use provider.rating if it exists, otherwise use default
+          rating: provider.rating !== undefined ? provider.rating : 4.5,
+          reviewCount: provider.reviewCount !== undefined ? provider.reviewCount : 10,
         };
       })
     );
@@ -107,9 +107,9 @@ router.get("/category/:serviceType", async (req, res) => {
             id: img.id,
             imagePath: img.imagePath,
           })),
-          // Adding these fields for compatibility with the frontend
-          rating: 4.5, // Default rating, you could add a ratings table later
-          reviewCount: 10, // Default review count
+          // Use provider.rating if it exists, otherwise use default
+          rating: provider.rating !== undefined ? provider.rating : 4.5,
+          reviewCount: provider.reviewCount !== undefined ? provider.reviewCount : 10,
         };
       })
     );
@@ -158,9 +158,9 @@ router.get("/:id", async (req, res) => {
         id: img.id,
         imagePath: img.imagePath,
       })),
-      // Adding these fields for compatibility with the frontend
-      rating: 4.5, // Default rating, you could add a ratings table later
-      reviewCount: 10, // Default review count
+      // Use provider.rating if it exists, otherwise use default
+      rating: provider.rating !== undefined ? provider.rating : 4.5,
+      reviewCount: provider.reviewCount !== undefined ? provider.reviewCount : 10,
     };
 
     res.status(200).json({

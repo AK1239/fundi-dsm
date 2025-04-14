@@ -28,7 +28,7 @@ const FundiList = ({ category, onBack }) => {
                     provider.name
                   )}`,
             images: provider.images || [],
-            rating: provider.rating || 4.5,
+            rating: typeof provider.rating === "number" ? provider.rating : 4.5,
             reviewCount: provider.reviewCount || 10,
             location: provider.location,
             phoneNumber: provider.phoneNumber,
@@ -146,16 +146,17 @@ const FundiList = ({ category, onBack }) => {
                   <div className="flex justify-between items-center mb-3">
                     <div className="flex items-center">
                       <span className="text-lg font-semibold text-gray-800 mr-2">
-                        {fundi.rating.toFixed(1)}
+                        {typeof fundi.rating === "number" ? fundi.rating.toFixed(1) : "0.0"}
                       </span>
                       <div className="flex">
                         {[1, 2, 3, 4, 5].map((star) => (
                           <svg
                             key={star}
                             className={`w-5 h-5 ${
-                              star <= fundi.rating
+                              star <= (typeof fundi.rating === "number" ? fundi.rating : 0)
                                 ? "text-yellow-400"
-                                : star <= fundi.rating + 0.5
+                                : star <=
+                                  (typeof fundi.rating === "number" ? fundi.rating : 0) + 0.5
                                 ? "text-yellow-400"
                                 : "text-gray-300"
                             }`}

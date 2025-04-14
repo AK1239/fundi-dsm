@@ -38,46 +38,12 @@ const FundiDetail = ({ fundi, onBack }) => {
           setReviews(response.data || []);
         } else {
           setError("Failed to fetch reviews");
-          // If API fails, show some default reviews for better UX
-          setReviews([
-            {
-              id: 1,
-              name: "John Doe",
-              rating: 4,
-              date: "2023-10-15",
-              comment:
-                "Very professional and efficient. Fixed my issues quickly and at a fair price.",
-            },
-            {
-              id: 2,
-              name: "Mary Smith",
-              rating: 5,
-              date: "2023-09-22",
-              comment: "Excellent service! Very knowledgeable and friendly. Highly recommended.",
-            },
-          ]);
+          setReviews([]);
         }
       } catch (err) {
         console.error("Error fetching reviews:", err);
         setError("An error occurred while fetching reviews");
-        // Show default reviews on error
-        setReviews([
-          {
-            id: 1,
-            name: "John Doe",
-            rating: 4,
-            date: "2023-10-15",
-            comment:
-              "Very professional and efficient. Fixed my issues quickly and at a fair price.",
-          },
-          {
-            id: 2,
-            name: "Mary Smith",
-            rating: 5,
-            date: "2023-09-22",
-            comment: "Excellent service! Very knowledgeable and friendly. Highly recommended.",
-          },
-        ]);
+        setReviews([]);
       } finally {
         setLoading(false);
       }
