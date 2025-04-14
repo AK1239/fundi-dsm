@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { API_ENDPOINTS } from "../config/api";
 
 const JoinUsPage = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +22,8 @@ const JoinUsPage = () => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [previewImages, setPreviewImages] = useState([]);
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const serviceTypes = [
     "Fundi Umeme",
@@ -28,11 +32,11 @@ const JoinUsPage = () => {
     "Fundi Magari",
     "Fundi Rangi",
     "Fundi Bustani",
-    "Msafishaji Nyumba",
     "Fundi Kompyuta",
     "Fundi AC",
     "Fundi Ujenzi",
     "Fundi Chuma",
+    "Mshona Nguo",
     "Nyingine",
   ];
 
@@ -80,37 +84,67 @@ const JoinUsPage = () => {
     setSelectedImages(newSelectedImages);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log("Form Data:", formData);
-    console.log("Images:", selectedImages);
+    setIsLoading(true);
+    setError(null);
 
-    // Show success message
-    setSubmitted(true);
+    try {
+      // Create FormData object to handle file uploads
+      const formDataToSend = new FormData();
 
-    // Reset form after submission
-    setFormData({
-      name: "",
-      phoneNumber: "",
-      email: "",
-      location: "",
-      serviceType: "",
-      experience: "",
-      description: "",
-      facebookLink: "",
-      instagramLink: "",
-      twitterLink: "",
-      whatsappNumber: "",
-    });
+      // Add all form fields
+      Object.keys(formData).forEach((key) => {
+        formDataToSend.append(key, formData[key]);
+      });
 
-    setSelectedImages([]);
-    setPreviewImages([]);
+      // Add image files
+      selectedImages.forEach((image) => {
+        formDataToSend.append("images", image);
+      });
 
-    // Reset success message after 5 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 5000);
+      // Send data to the backend using axios
+      const response = await axios.post(API_ENDPOINTS.PROVIDERS, formDataToSend, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      // Show success message
+      setSubmitted(true);
+
+      // Reset form after submission
+      setFormData({
+        name: "",
+        phoneNumber: "",
+        email: "",
+        location: "",
+        serviceType: "",
+        experience: "",
+        description: "",
+        facebookLink: "",
+        instagramLink: "",
+        twitterLink: "",
+        whatsappNumber: "",
+      });
+
+      setSelectedImages([]);
+      setPreviewImages([]);
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setError(
+        error.response?.data?.message ||
+          error.message ||
+          "Kuna tatizo limetokea wakati wa kuwasilisha fomu."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -220,6 +254,12 @@ const JoinUsPage = () => {
                   </p>
                 </div>
               ) : null}
+
+              {error && (
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+                  <p>{error}</p>
+                </div>
+              )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -542,9 +582,12 @@ const JoinUsPage = () => {
                 <div>
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors"
+                    className={`w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors ${
+                      isLoading ? "opacity-70 cursor-not-allowed" : ""
+                    }`}
+                    disabled={isLoading}
                   >
-                    Wasilisha Maombi
+                    {isLoading ? "Inawasilisha..." : "Wasilisha Maombi"}
                   </button>
                 </div>
               </form>
