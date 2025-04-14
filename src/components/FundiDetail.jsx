@@ -1,51 +1,132 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { providerService, reviewService } from "../services/api";
 
 const FundiDetail = ({ fundi, onBack }) => {
   const [reviewText, setReviewText] = useState("");
   const [userRating, setUserRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Mock multiple images for the slider
-  const fundiImages = [
-    fundi.image,
-    `https://placehold.co/600x400/4287f5/FFFFFF?text=${encodeURIComponent(fundi.name + " 2")}`,
-    `https://placehold.co/600x400/6c42f5/FFFFFF?text=${encodeURIComponent(fundi.name + " 3")}`,
-    `https://placehold.co/600x400/f542b7/FFFFFF?text=${encodeURIComponent(fundi.name + " 4")}`,
-    `https://placehold.co/600x400/42f56c/FFFFFF?text=${encodeURIComponent(fundi.name + " 5")}`,
-  ];
+  // Images for the slider
+  const fundiImages =
+    fundi.images && fundi.images.length > 0
+      ? fundi.images.map(
+          (img) =>
+            `${import.meta.env.VITE_API_URL || "http://localhost:5001"}/uploads/${img.imagePath}`
+        )
+      : [
+          fundi.image,
+          `https://placehold.co/600x400/4287f5/FFFFFF?text=${encodeURIComponent(
+            fundi.name + " 2"
+          )}`,
+          `https://placehold.co/600x400/6c42f5/FFFFFF?text=${encodeURIComponent(
+            fundi.name + " 3"
+          )}`,
+        ];
 
-  const [reviews, setReviews] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      rating: 4,
-      date: "2023-10-15",
-      comment: "Very professional and efficient. Fixed my issues quickly and at a fair price.",
-    },
-    {
-      id: 2,
-      name: "Mary Smith",
-      rating: 5,
-      date: "2023-09-22",
-      comment: "Excellent service! Very knowledgeable and friendly. Highly recommended.",
-    },
-  ]);
+  // Fetch reviews for this provider
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        setLoading(true);
+        const response = await reviewService.getProviderReviews(fundi.id);
+        if (response.success) {
+          setReviews(response.data || []);
+        } else {
+          setError("Failed to fetch reviews");
+          // If API fails, show some default reviews for better UX
+          setReviews([
+            {
+              id: 1,
+              name: "John Doe",
+              rating: 4,
+              date: "2023-10-15",
+              comment:
+                "Very professional and efficient. Fixed my issues quickly and at a fair price.",
+            },
+            {
+              id: 2,
+              name: "Mary Smith",
+              rating: 5,
+              date: "2023-09-22",
+              comment: "Excellent service! Very knowledgeable and friendly. Highly recommended.",
+            },
+          ]);
+        }
+      } catch (err) {
+        console.error("Error fetching reviews:", err);
+        setError("An error occurred while fetching reviews");
+        // Show default reviews on error
+        setReviews([
+          {
+            id: 1,
+            name: "John Doe",
+            rating: 4,
+            date: "2023-10-15",
+            comment:
+              "Very professional and efficient. Fixed my issues quickly and at a fair price.",
+          },
+          {
+            id: 2,
+            name: "Mary Smith",
+            rating: 5,
+            date: "2023-09-22",
+            comment: "Excellent service! Very knowledgeable and friendly. Highly recommended.",
+          },
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const handleSubmitReview = (e) => {
+    fetchReviews();
+  }, [fundi.id]);
+
+  const handleSubmitReview = async (e) => {
     e.preventDefault();
     if (reviewText.trim() && userRating > 0) {
-      const newReview = {
-        id: reviews.length + 1,
-        name: "You",
-        rating: userRating,
-        date: new Date().toISOString().split("T")[0],
-        comment: reviewText,
-      };
-      // Keep only the most recent 2 reviews (the new one and the first of the existing ones)
-      setReviews([newReview, reviews[0]]);
-      setReviewText("");
-      setUserRating(0);
+      try {
+        setSubmitting(true);
+
+        const reviewData = {
+          providerId: fundi.id,
+          rating: userRating,
+          comment: reviewText,
+          name: "You", // In a real app, get the user's name from authentication
+        };
+
+        const response = await reviewService.submitReview(reviewData);
+
+        if (response.success) {
+          // Add the new review to the list
+          const newReview = {
+            id: response.data.id || reviews.length + 1,
+            name: "You",
+            rating: userRating,
+            date: new Date().toISOString().split("T")[0],
+            comment: reviewText,
+          };
+
+          // Keep only the most recent reviews (the new one and up to 5 of the existing ones)
+          const updatedReviews = [newReview, ...reviews.slice(0, 5)];
+          setReviews(updatedReviews);
+
+          // Reset form
+          setReviewText("");
+          setUserRating(0);
+        } else {
+          setError("Failed to submit review");
+        }
+      } catch (err) {
+        console.error("Error submitting review:", err);
+        setError("An error occurred while submitting the review");
+      } finally {
+        setSubmitting(false);
+      }
     }
   };
 
@@ -250,7 +331,9 @@ const FundiDetail = ({ fundi, onBack }) => {
                         d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                       />
                     </svg>
-                    <span className="text-gray-700">{fundi.servicesProvided}</span>
+                    <span className="text-gray-700">
+                      {fundi.servicesProvided || fundi.serviceType}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -350,44 +433,58 @@ const FundiDetail = ({ fundi, onBack }) => {
               <button
                 type="submit"
                 className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                disabled={!userRating || !reviewText.trim()}
+                disabled={!userRating || !reviewText.trim() || submitting}
               >
-                Submit Review
+                {submitting ? "Submitting..." : "Submit Review"}
               </button>
+              {error && <p className="mt-2 text-red-500 text-sm">{error}</p>}
             </form>
           </div>
 
-          {/* Reviews List - Limited to 2 */}
-          <div className="space-y-6">
-            {reviews.map((review) => (
-              <div key={review.id} className="bg-white rounded-xl shadow-md p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900">{review.name}</h4>
-                    <div className="flex items-center mt-1">
-                      <div className="flex mr-2">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <svg
-                            key={star}
-                            className={`w-5 h-5 ${
-                              star <= review.rating ? "text-yellow-400" : "text-gray-300"
-                            }`}
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
+          {/* Reviews List */}
+          {loading ? (
+            <div className="text-center py-8">
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+              <p className="mt-2 text-gray-600">Loading reviews...</p>
+            </div>
+          ) : reviews.length > 0 ? (
+            <div className="space-y-6">
+              {reviews.map((review) => (
+                <div key={review.id} className="bg-white rounded-xl shadow-md p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900">{review.name}</h4>
+                      <div className="flex items-center mt-1">
+                        <div className="flex mr-2">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <svg
+                              key={star}
+                              className={`w-5 h-5 ${
+                                star <= review.rating ? "text-yellow-400" : "text-gray-300"
+                              }`}
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                          ))}
+                        </div>
                       </div>
                     </div>
+                    <span className="text-sm text-gray-500">{review.date}</span>
                   </div>
-                  <span className="text-sm text-gray-500">{review.date}</span>
+                  <p className="text-gray-700">{review.comment}</p>
                 </div>
-                <p className="text-gray-700">{review.comment}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-white rounded-xl shadow-md p-6 text-center">
+              <p className="text-gray-600">
+                No reviews yet. Be the first to share your experience!
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import db from "../db/index.js";
 import { providers, providerImages } from "../db/schema.js";
+import { eq } from "drizzle-orm";
 
 const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
@@ -38,6 +39,142 @@ const upload = multer({
   limits: {
     fileSize: 5 * 1024 * 1024, // 5MB limit
   },
+});
+
+// GET all providers with their images
+router.get("/", async (req, res) => {
+  try {
+    // Get all providers
+    const allProviders = await db.select().from(providers);
+
+    // For each provider, get their images
+    const providersWithImages = await Promise.all(
+      allProviders.map(async (provider) => {
+        const images = await db
+          .select()
+          .from(providerImages)
+          .where(eq(providerImages.providerId, provider.id));
+
+        return {
+          ...provider,
+          images: images.map((img) => ({
+            id: img.id,
+            imagePath: img.imagePath,
+          })),
+          // Adding these fields for compatibility with the frontend
+          rating: 4.5, // Default rating, you could add a ratings table later
+          reviewCount: 10, // Default review count
+        };
+      })
+    );
+
+    res.status(200).json({
+      success: true,
+      data: providersWithImages,
+    });
+  } catch (error) {
+    console.error("Error fetching providers:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch providers",
+      error: error.message,
+    });
+  }
+});
+
+// GET providers by service type (category)
+router.get("/category/:serviceType", async (req, res) => {
+  try {
+    const { serviceType } = req.params;
+
+    // Get providers by service type
+    const categoryProviders = await db
+      .select()
+      .from(providers)
+      .where(eq(providers.serviceType, serviceType));
+
+    // For each provider, get their images
+    const providersWithImages = await Promise.all(
+      categoryProviders.map(async (provider) => {
+        const images = await db
+          .select()
+          .from(providerImages)
+          .where(eq(providerImages.providerId, provider.id));
+
+        return {
+          ...provider,
+          images: images.map((img) => ({
+            id: img.id,
+            imagePath: img.imagePath,
+          })),
+          // Adding these fields for compatibility with the frontend
+          rating: 4.5, // Default rating, you could add a ratings table later
+          reviewCount: 10, // Default review count
+        };
+      })
+    );
+
+    res.status(200).json({
+      success: true,
+      data: providersWithImages,
+    });
+  } catch (error) {
+    console.error("Error fetching providers by category:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch providers by category",
+      error: error.message,
+    });
+  }
+});
+
+// GET a single provider by ID
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Get provider by ID
+    const [provider] = await db
+      .select()
+      .from(providers)
+      .where(eq(providers.id, parseInt(id)));
+
+    if (!provider) {
+      return res.status(404).json({
+        success: false,
+        message: "Provider not found",
+      });
+    }
+
+    // Get provider images
+    const images = await db
+      .select()
+      .from(providerImages)
+      .where(eq(providerImages.providerId, provider.id));
+
+    const providerWithImages = {
+      ...provider,
+      images: images.map((img) => ({
+        id: img.id,
+        imagePath: img.imagePath,
+      })),
+      // Adding these fields for compatibility with the frontend
+      rating: 4.5, // Default rating, you could add a ratings table later
+      reviewCount: 10, // Default review count
+    };
+
+    res.status(200).json({
+      success: true,
+      data: providerWithImages,
+    });
+  } catch (error) {
+    console.error("Error fetching provider:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch provider",
+      error: error.message,
+    });
+  }
 });
 
 // Route to register a new provider

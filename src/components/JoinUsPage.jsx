@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { API_ENDPOINTS } from "../config/api";
+import { providerService } from "../services/api";
 import toast, { Toaster } from "react-hot-toast";
 
 const JoinUsPage = () => {
@@ -104,12 +103,8 @@ const JoinUsPage = () => {
         formDataToSend.append("images", image);
       });
 
-      // Send data to the backend using axios
-      const response = await axios.post(API_ENDPOINTS.PROVIDERS, formDataToSend, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      // Send data to the backend using our providerService
+      const response = await providerService.registerProvider(formDataToSend);
 
       // Show success toast
       toast.success("Asante kwa kujisajili! Karibu nasi.", {
