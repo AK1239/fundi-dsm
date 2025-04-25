@@ -76,7 +76,7 @@ const FundiList = ({ category, onBack }) => {
           <div>
             <button
               onClick={onBack}
-              className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+              className="flex items-center text-blue-600 hover:text-blue-800 transition-colors cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +118,7 @@ const FundiList = ({ category, onBack }) => {
             <p className="text-red-500">{error}</p>
             <button
               onClick={() => window.location.reload()}
-              className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
             >
               Try Again
             </button>
@@ -175,7 +175,7 @@ const FundiList = ({ category, onBack }) => {
                     {fundi.shortDescription}
                   </p>
                   <button
-                    className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
+                    className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors cursor-pointer"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleFundiSelect(fundi);

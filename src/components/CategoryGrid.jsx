@@ -288,7 +288,7 @@ const CategoryGrid = ({ searchQuery, onCategorySelect }) => {
               <button
                 key={category.id}
                 onClick={() => onCategorySelect(category.name)}
-                className="bg-white rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 overflow-hidden text-left"
+                className="bg-white rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 overflow-hidden text-left cursor-pointer"
               >
                 <div className="p-6 flex flex-col items-center">
                   <div className="text-blue-600 mb-4">{category.icon}</div>

@@ -39,7 +39,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="text-gray-600 hover:text-blue-600 focus:outline-none"
+              className="text-gray-600 hover:text-blue-600 focus:outline-none cursor-pointer"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isMenuOpen ? (

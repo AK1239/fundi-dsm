@@ -32,7 +32,7 @@ const HeroSection = ({ onSearch }) => {
               />
               <button
                 type="submit"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-medium transition-colors"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-medium transition-colors cursor-pointer"
               >
                 Search
               </button>

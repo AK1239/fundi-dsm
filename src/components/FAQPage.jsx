@@ -116,7 +116,7 @@ const FAQPage = () => {
               <nav className="flex">
                 <button
                   onClick={() => setActiveTab("faq")}
-                  className={`py-4 px-6 text-center font-medium ${
+                  className={`py-4 px-6 text-center font-medium cursor-pointer ${
                     activeTab === "faq"
                       ? "text-blue-600 border-b-2 border-blue-600"
                       : "text-gray-500 hover:text-blue-600 hover:border-blue-600"
@@ -126,7 +126,7 @@ const FAQPage = () => {
                 </button>
                 <button
                   onClick={() => setActiveTab("terms")}
-                  className={`py-4 px-6 text-center font-medium ${
+                  className={`py-4 px-6 text-center font-medium cursor-pointer ${
                     activeTab === "terms"
                       ? "text-blue-600 border-b-2 border-blue-600"
                       : "text-gray-500 hover:text-blue-600 hover:border-blue-600"
@@ -136,7 +136,7 @@ const FAQPage = () => {
                 </button>
                 <button
                   onClick={() => setActiveTab("complaints")}
-                  className={`py-4 px-6 text-center font-medium ${
+                  className={`py-4 px-6 text-center font-medium cursor-pointer ${
                     activeTab === "complaints"
                       ? "text-blue-600 border-b-2 border-blue-600"
                       : "text-gray-500 hover:text-blue-600 hover:border-blue-600"
@@ -146,7 +146,7 @@ const FAQPage = () => {
                 </button>
                 <button
                   onClick={() => setActiveTab("dosdonts")}
-                  className={`py-4 px-6 text-center font-medium ${
+                  className={`py-4 px-6 text-center font-medium cursor-pointer ${
                     activeTab === "dosdonts"
                       ? "text-blue-600 border-b-2 border-blue-600"
                       : "text-gray-500 hover:text-blue-600 hover:border-blue-600"
@@ -391,7 +391,7 @@ const FAQPage = () => {
                     <div>
                       <button
                         type="submit"
-                        className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors"
+                        className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors cursor-pointer"
                       >
                         Submit Complaint
                       </button>

@@ -110,7 +110,7 @@ const FundiDetail = ({ fundi, onBack }) => {
         <div className="mb-8">
           <button
             onClick={onBack}
-            className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+            className="flex items-center text-blue-600 hover:text-blue-800 transition-colors cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +142,7 @@ const FundiDetail = ({ fundi, onBack }) => {
             {/* Navigation buttons */}
             <button
               onClick={goToPrevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 rounded-full p-2 text-white hover:bg-black/70 transition-colors"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 rounded-full p-2 text-white hover:bg-black/70 transition-colors cursor-pointer"
             >
               <svg
                 className="w-6 h-6"
@@ -161,7 +161,7 @@ const FundiDetail = ({ fundi, onBack }) => {
             </button>
             <button
               onClick={goToNextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 rounded-full p-2 text-white hover:bg-black/70 transition-colors"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 rounded-full p-2 text-white hover:bg-black/70 transition-colors cursor-pointer"
             >
               <svg
                 className="w-6 h-6"
@@ -185,7 +185,7 @@ const FundiDetail = ({ fundi, onBack }) => {
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`w-3 h-3 rounded-full ${
+                  className={`w-3 h-3 rounded-full cursor-pointer ${
                     currentImageIndex === index ? "bg-white" : "bg-white/50"
                   }`}
                 />
@@ -361,7 +361,7 @@ const FundiDetail = ({ fundi, onBack }) => {
                     <button
                       key={star}
                       type="button"
-                      className="focus:outline-none"
+                      className="focus:outline-none cursor-pointer"
                       onClick={() => setUserRating(star)}
                       onMouseEnter={() => setHoveredRating(star)}
                       onMouseLeave={() => setHoveredRating(0)}
@@ -398,7 +398,7 @@ const FundiDetail = ({ fundi, onBack }) => {
               </div>
               <button
                 type="submit"
-                className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
                 disabled={!userRating || !reviewText.trim() || submitting}
               >
                 {submitting ? "Submitting..." : "Submit Review"}
