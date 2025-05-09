@@ -37,7 +37,9 @@ const AboutUs = () => {
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About FundiDSM</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Local Handyman Service You Can Trust
+            </h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
               Connecting communities with skilled professionals across Tanzania
             </p>
@@ -56,21 +58,25 @@ const AboutUs = () => {
                 />
               </div>
               <div className="md:w-1/2">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  The Birth of Fundi DSM Website
+                </h2>
                 <p className="text-gray-700 mb-4">
-                  FundiDSM was founded in 2023 with a simple yet powerful vision: to bridge the gap
-                  between skilled technicians and the people who need their services in Tanzania.
+                  It all started with a simple observation: people were increasingly turning to the
+                  internet for solutions to their everyday problems. From finding recipes to booking
+                  flights, the digital world had become a go-to resource. And yet, when it came to
+                  finding reliable, skilled professionals for home repairs or odd jobs, the online
+                  landscape was still fragmented.
                 </p>
                 <p className="text-gray-700 mb-4">
-                  We recognized that while Tanzania has thousands of highly skilled fundis
-                  (technicians), finding the right professional for specific needs was often
-                  challenging, time-consuming, and based on unreliable word-of-mouth
-                  recommendations.
+                  I envisioned a platform that would connect homeowners/businesses with qualified
+                  repairmen and handymen in their local area. A place where people could easily find
+                  trusted professionals who could handle everything from fixing leaky faucets to
+                  installing shelves.
                 </p>
                 <p className="text-gray-700">
-                  Our platform was created to solve this problem by providing a centralized, trusted
-                  marketplace where customers can easily find, evaluate, and connect with verified
-                  service providers across a wide range of categories.
+                  The idea for the FundiDSM website was born out of a desire to create a more
+                  convenient and efficient way for people to get their repairs done.
                 </p>
               </div>
             </div>
@@ -81,76 +87,36 @@ const AboutUs = () => {
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Mission & Vision</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Your Go-To Handyman Hub</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                We're on a mission to transform how services are discovered and delivered
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Mission */}
-              <div className="bg-white p-8 rounded-xl shadow-md">
-                <div className="inline-block p-3 bg-blue-100 rounded-full text-blue-600 mb-4">
-                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Our Mission</h3>
-                <p className="text-gray-700">
-                  To empower Tanzanian communities by connecting them with skilled professionals
-                  through a transparent, efficient, and trusted platform that enhances access to
-                  quality services while creating economic opportunities for local fundis.
-                </p>
-              </div>
-
-              {/* Vision */}
-              <div className="bg-white p-8 rounded-xl shadow-md">
-                <div className="inline-block p-3 bg-blue-100 rounded-full text-blue-600 mb-4">
-                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Our Vision</h3>
-                <p className="text-gray-700">
-                  To become the premier platform for service discovery in East Africa, where every
-                  individual and business can easily find and engage with trusted professionals for
-                  all their needs, driving economic growth and improving quality of life across
-                  communities.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Values */}
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Values</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                The principles that guide everything we do
+                Goals and visions why we are doing this
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Value 1 */}
-              <div className="bg-gray-50 rounded-xl p-8 text-center">
+              {/* Goal 1 */}
+              <div className="bg-white p-8 rounded-xl shadow-md">
+                <div className="inline-block p-3 bg-blue-100 rounded-full text-blue-600 mb-4">
+                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  Simplify the Search Process
+                </h3>
+                <p className="text-gray-700">
+                  We make it easy to find qualified professionals for any home repair or maintenance
+                  task. No more endless searching or unreliable referrals.
+                </p>
+              </div>
+
+              {/* Goal 2 */}
+              <div className="bg-white p-8 rounded-xl shadow-md">
                 <div className="inline-block p-3 bg-blue-100 rounded-full text-blue-600 mb-4">
                   <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
@@ -161,48 +127,29 @@ const AboutUs = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Trust & Integrity</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Build Trust</h3>
                 <p className="text-gray-700">
-                  We verify our service providers and foster a community built on trust,
-                  transparency, and honest feedback.
+                  Our platform helps you find verified professionals you can trust, with transparent
+                  reviews and ratings from other customers in your community.
                 </p>
               </div>
 
-              {/* Value 2 */}
-              <div className="bg-gray-50 rounded-xl p-8 text-center">
+              {/* Goal 3 */}
+              <div className="bg-white p-8 rounded-xl shadow-md">
                 <div className="inline-block p-3 bg-blue-100 rounded-full text-blue-600 mb-4">
                   <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Community Empowerment</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Offer Convenience</h3>
                 <p className="text-gray-700">
-                  We're committed to creating economic opportunities for local professionals and
-                  improving access to essential services.
-                </p>
-              </div>
-
-              {/* Value 3 */}
-              <div className="bg-gray-50 rounded-xl p-8 text-center">
-                <div className="inline-block p-3 bg-blue-100 rounded-full text-blue-600 mb-4">
-                  <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Quality Service</h3>
-                <p className="text-gray-700">
-                  We strive for excellence by promoting skilled professionals and enabling a rating
-                  system that rewards quality service.
+                  We provide a seamless experience from search to service, making it easy to find,
+                  contact, and hire skilled professionals for all your repair needs.
                 </p>
               </div>
             </div>
@@ -213,10 +160,10 @@ const AboutUs = () => {
         <section className="py-16 bg-blue-600 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">The Problem We're Solving</h2>
+              <h2 className="text-3xl font-bold mb-4">What Problem Are We Solving?</h2>
               <p className="text-xl opacity-90 max-w-3xl mx-auto">
-                Addressing the disconnect between skilled professionals and those in need of their
-                services
+                We are solving the problem of finding reliable and skilled handymen for repairs and
+                maintenance.
               </p>
             </div>
 
@@ -292,7 +239,13 @@ const AboutUs = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl font-semibold mb-6">For Service Providers</h3>
+                <h3 className="text-2xl font-semibold mb-6">Our Commitment</h3>
+                <p className="text-white mb-6">
+                  We're committed to providing you with a seamless and hassle-free experience. Our
+                  team is always available to assist you with any questions or concerns. We strive
+                  to ensure that you find the perfect handyman for your project and that you're
+                  completely satisfied with the results.
+                </p>
                 <ul className="space-y-4">
                   <li className="flex items-start">
                     <svg
@@ -308,7 +261,7 @@ const AboutUs = () => {
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <span>Limited visibility to potential customers in their area</span>
+                    <span>Reliable service providers vetted for quality</span>
                   </li>
                   <li className="flex items-start">
                     <svg
@@ -324,7 +277,7 @@ const AboutUs = () => {
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <span>Challenges in establishing credibility and trust</span>
+                    <span>Responsive customer support</span>
                   </li>
                   <li className="flex items-start">
                     <svg
@@ -340,23 +293,7 @@ const AboutUs = () => {
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <span>Difficulty in growing their client base beyond word-of-mouth</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-blue-200 mr-2 mt-0.5 flex-shrink-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    <span>Inconsistent workflow and income opportunities</span>
+                    <span>Transparency in all our processes</span>
                   </li>
                 </ul>
               </div>
