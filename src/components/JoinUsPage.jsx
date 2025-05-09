@@ -35,6 +35,14 @@ const JoinUsPage = () => {
     "Fundi Ujenzi",
     "Fundi Chuma",
     "Mshona Nguo",
+    "Fundi Tiles",
+    "Fundi Dish/Antenna",
+    "Fundi Simu",
+    "Fundi TV",
+    "Fundi Network/Telecommunication",
+    "Fundi Vigae/Paving Blocks",
+    "Fundi Maturubai/Tent",
+    "Fundi Saa/Watch Repair",
     "Nyingine",
   ];
 
