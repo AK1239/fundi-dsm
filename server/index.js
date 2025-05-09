@@ -6,6 +6,11 @@ import { dirname, join } from "path";
 import fs from "fs";
 import providersRoutes from "./routes/providers.js";
 import reviewsRoutes from "./routes/reviews.js";
+import db from "./db/index.js";
+import { drizzle } from "drizzle-orm/postgres-js";
+import { migrate } from "drizzle-orm/postgres-js/migrator";
+import postgres from "postgres";
+import path from "path";
 
 // Initialize environment variables
 dotenv.config();
@@ -30,6 +35,33 @@ app.use("/uploads", express.static(uploadPath));
 // Routes
 app.use("/api/providers", providersRoutes);
 app.use("/api/reviews", reviewsRoutes);
+
+// Migration endpoint with secret key protection
+app.post("/api/migrate", async (req, res) => {
+  const { secret } = req.body;
+
+  // Verify secret key - this should be set in Render env vars
+  if (secret !== process.env.MIGRATION_SECRET) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  try {
+    // Setup database connection for migration
+    const connectionString = `postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
+    const migrationClient = postgres(connectionString, { max: 1 });
+    const db = drizzle(migrationClient);
+
+    // Run migrations
+    await migrate(db, { migrationsFolder: path.join(__dirname, "db/migrations") });
+
+    await migrationClient.end();
+
+    return res.status(200).json({ message: "Migrations completed successfully" });
+  } catch (error) {
+    console.error("Migration error:", error);
+    return res.status(500).json({ message: "Migration failed", error: error.message });
+  }
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
