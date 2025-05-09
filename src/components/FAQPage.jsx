@@ -155,7 +155,7 @@ const FAQPage = () => {
           {/* Tabs */}
           <div className="bg-white rounded-xl shadow-md overflow-hidden mb-12">
             <div className="border-b border-gray-200">
-              <nav className="flex">
+              <nav className="flex flex-wrap">
                 <button
                   onClick={() => setActiveTab("faq")}
                   className={`py-4 px-6 text-center font-medium cursor-pointer ${
@@ -195,6 +195,16 @@ const FAQPage = () => {
                   }`}
                 >
                   Do's & Don'ts
+                </button>
+                <button
+                  onClick={() => setActiveTab("help")}
+                  className={`py-4 px-6 text-center font-medium cursor-pointer ${
+                    activeTab === "help"
+                      ? "text-blue-600 border-b-2 border-blue-600"
+                      : "text-gray-500 hover:text-blue-600 hover:border-blue-600"
+                  }`}
+                >
+                  Help
                 </button>
               </nav>
             </div>
@@ -741,6 +751,363 @@ const FAQPage = () => {
                       suspicious behavior or safety concerns immediately through our complaint form
                       or by contacting our support team.
                     </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Help Section */}
+              {activeTab === "help" && (
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Help Guide</h2>
+
+                  <div className="space-y-10">
+                    {/* Things to Avoid */}
+                    <section>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                        Things to Avoid When Hiring a Handyman
+                      </h3>
+                      <p className="text-gray-700 mb-6">
+                        Here's a list of things to avoid when hiring a handyman to ensure a smooth
+                        and positive experience:
+                      </p>
+
+                      <div className="space-y-6">
+                        <div>
+                          <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                            Before Hiring:
+                          </h4>
+                          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                            <li>
+                              <span className="font-medium">Unclear Communication:</span> Avoid
+                              vague or unclear descriptions of the work needed. Be specific about
+                              the tasks and provide details.
+                            </li>
+                            <li>
+                              <span className="font-medium">Unrealistic Expectations:</span> Set
+                              realistic expectations regarding the timeline and cost. Avoid
+                              expecting miracles or unrealistic turnaround times.
+                            </li>
+                            <li>
+                              <span className="font-medium">Hiring Based Solely on Price.</span>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                            During the Job:
+                          </h4>
+                          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                            <li>
+                              <span className="font-medium">Lack of Supervision:</span> Don't leave
+                              the handyman unsupervised, especially if they're working in your home.
+                              Maintain regular communication and check on their progress.
+                            </li>
+                            <li>
+                              <span className="font-medium">Unclear Payments:</span> Avoid paying
+                              upfront for the entire job. Make payments in stages as work is
+                              completed to protect your interests.
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                            After the Job:
+                          </h4>
+                          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                            <li>
+                              <span className="font-medium">Unresolved Issues:</span> Don't accept
+                              incomplete or unsatisfactory work. Address any problems or issues
+                              promptly and communicate your concerns clearly.
+                            </li>
+                            <li>
+                              <span className="font-medium">Lack of Follow-Up.</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <p className="text-gray-700 mt-4">
+                        By avoiding these common pitfalls, you can increase your chances of a
+                        successful and hassle-free experience when hiring a handyman.
+                      </p>
+                    </section>
+
+                    {/* Precautions and Tips */}
+                    <section className="mt-10 pt-10 border-t border-gray-200">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                        Precautions and Tips for Hiring a Handyman
+                      </h3>
+                      <p className="text-gray-700 mb-6 italic">
+                        Disclaimer: While we strive to provide helpful information, we cannot be
+                        held responsible for any interactions or outcomes arising from your use of
+                        this information. It's essential to exercise due diligence and make informed
+                        decisions when hiring a handyman.
+                      </p>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="bg-green-50 rounded-lg p-6 border border-green-200">
+                          <h4 className="text-lg font-semibold text-green-800 mb-4 flex items-center">
+                            <svg
+                              className="h-6 w-6 mr-2"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                            What to Do:
+                          </h4>
+                          <ul className="space-y-3">
+                            <li className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">
+                                <span className="font-medium">Get Multiple Quotes:</span> Compare
+                                prices and services from different handymen.
+                              </span>
+                            </li>
+                            <li className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">
+                                <span className="font-medium">Clear Communication:</span> Discuss
+                                the project in detail, including scope of work, timeline, and
+                                payment terms.
+                              </span>
+                            </li>
+                            <li className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">
+                                <span className="font-medium">Progress Updates:</span> Stay in touch
+                                with the handyman and monitor progress.
+                              </span>
+                            </li>
+                            <li className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">
+                                <span className="font-medium">Pay in Stages:</span> Avoid paying the
+                                entire amount upfront. Consider progress payments.
+                              </span>
+                            </li>
+                            <li className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">
+                                <span className="font-medium">Inspect Work:</span> Carefully inspect
+                                the completed work before final payment.
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div className="bg-red-50 rounded-lg p-6 border border-red-200">
+                          <h4 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                            <svg
+                              className="h-6 w-6 mr-2"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M6 18L18 6M6 6l12 12"
+                              />
+                            </svg>
+                            What Not to Do:
+                          </h4>
+                          <ul className="space-y-3">
+                            <li className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">
+                                <span className="font-medium">Hire Based on Price Alone:</span>{" "}
+                                Consider factors like experience, reputation.
+                              </span>
+                            </li>
+                            <li className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">
+                                <span className="font-medium">Pay Cash Upfront:</span> Avoid paying
+                                large sums of money before work is completed.
+                              </span>
+                            </li>
+                            <li className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">
+                                <span className="font-medium">Leave Handyman Unattended:</span>{" "}
+                                Supervise the work, especially if you're not familiar with the
+                                tasks.
+                              </span>
+                            </li>
+                            <li className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">
+                                <span className="font-medium">Ignore Red Flags.</span>
+                              </span>
+                            </li>
+                            <li className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">
+                                <span className="font-medium">Accept Unfinished Work:</span> Ensure
+                                the job is completed to your satisfaction before final payment.
+                              </span>
+                            </li>
+                            <li className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">
+                                <span className="font-medium">Disregard Safety:</span> Always
+                                prioritize safety and follow local regulations.
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
+                        <p className="text-gray-700 font-medium">
+                          Remember: Your safety and satisfaction are paramount. By following these
+                          guidelines, you can increase your chances of a positive experience when
+                          hiring a handyman.
+                        </p>
+                      </div>
+                    </section>
                   </div>
                 </div>
               )}
