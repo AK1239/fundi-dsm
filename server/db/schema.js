@@ -16,7 +16,7 @@ export const providers = pgTable("providers", {
   phoneNumber: varchar("phone_number", { length: 20 }).notNull(),
   email: varchar("email", { length: 255 }),
   location: varchar("location", { length: 100 }).notNull(),
-  serviceType: varchar("serve_type", { length: 100 }).notNull(),
+  serviceType: varchar("service_type", { length: 100 }).notNull(),
   experience: varchar("experience", { length: 50 }).notNull(),
   description: text("description").notNull(),
   facebookLink: varchar("facebook_link", { length: 255 }),
