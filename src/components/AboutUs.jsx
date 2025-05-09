@@ -51,11 +51,7 @@ const AboutUs = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <div className="md:w-1/2">
-                <img
-                  src="https://placehold.co/800x600/3975CD/FFFFFF?text=Our+Story"
-                  alt="Our Story"
-                  className="rounded-xl shadow-lg w-full"
-                />
+                <img src="/about.jpg" alt="Our Story" className="rounded-xl shadow-lg w-full" />
               </div>
               <div className="md:w-1/2">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
