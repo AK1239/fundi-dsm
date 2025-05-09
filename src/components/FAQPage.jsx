@@ -118,24 +118,43 @@ const FAQPage = () => {
   ];
 
   const dosAndDonts = {
-    dos: [
-      "Verify the identity of the service provider before allowing them to work in your home or business",
-      "Clearly communicate your requirements and expectations",
-      "Agree on pricing and scope of work before the service begins",
-      "Request a written quote or contract for significant jobs",
-      "Be present or have someone you trust present during the service",
-      "Inspect completed work before making final payment",
-      "Leave honest and constructive feedback",
-    ],
-    donts: [
-      "Don't make full payment upfront before work is completed",
-      "Don't share sensitive personal information unnecessarily",
-      "Don't allow unauthorized access to sensitive areas of your home or business",
-      "Don't accept work that doesn't meet the agreed standards",
-      "Don't skip checking reviews and ratings before hiring",
-      "Don't communicate outside our platform until you've established trust",
-      "Don't ignore safety concerns during service provision",
-    ],
+    users: {
+      dos: [
+        "Provide clear and detailed descriptions of your repair needs",
+        "Ask for quotes from multiple fundis to compare prices and services",
+        "Check the fundi's profile for reviews and ratings",
+        "Discuss and agree on the price and scope of work before the fundi starts",
+        "Communicate clearly and respectfully with the fundi",
+        "Provide feedback and reviews after the service is completed",
+        "Prioritize safety and security when allowing a fundi into your home or premises",
+      ],
+      donts: [
+        "Share sensitive personal information publicly on the directory",
+        "Make unreasonable demands or expect services outside of the agreed scope without additional payment",
+        "Engage in disrespectful or abusive behavior towards fundis",
+        "Pay the full amount upfront unless it's a small, standard service or you have a strong prior relationship with the fundi",
+        "Hesitate to ask for identification or proof of qualifications if you have concerns",
+      ],
+    },
+    fundis: {
+      dos: [
+        "Create a detailed and accurate profile highlighting your skills, experience, and services offered",
+        "Respond to inquiries promptly and professionally",
+        "Provide clear and transparent pricing or quotes",
+        "Be punctual and reliable for appointments",
+        "Communicate clearly with users about the progress of the work",
+        "Maintain a professional and ethical demeanor",
+        "Request feedback from satisfied clients to build your reputation",
+      ],
+      donts: [
+        "Provide false or misleading information in your profile",
+        "Overcharge or inflate prices unfairly",
+        "Engage in unprofessional or unethical behavior",
+        "Pressure users into unnecessary repairs or services",
+        "Share user's personal information without their consent",
+        "Discriminate against users based on their background or any other protected characteristic",
+      ],
+    },
   };
 
   return (
@@ -657,99 +676,194 @@ const FAQPage = () => {
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">Do's and Don'ts</h2>
 
                   <p className="text-gray-700 mb-6">
-                    For the best experience and to ensure your safety when using FundiDSM, please
-                    follow these guidelines when engaging with service providers.
+                    This section provides a quick and easy-to-understand list of recommended actions
+                    and prohibited behaviors for both users and fundis.
                   </p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {/* Do's */}
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                      <h3 className="text-xl font-semibold text-green-800 mb-4 flex items-center">
-                        <svg
-                          className="h-6 w-6 mr-2"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                        Do's
-                      </h3>
-                      <ul className="space-y-3">
-                        {dosAndDonts.dos.map((item, index) => (
-                          <li key={index} className="flex items-start">
-                            <svg
-                              className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                              />
-                            </svg>
-                            <span className="text-gray-700">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  {/* For Users */}
+                  <div className="mb-10">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                      For Users (Those Seeking Fundis)
+                    </h3>
 
-                    {/* Don'ts */}
-                    <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-                      <h3 className="text-xl font-semibold text-red-800 mb-4 flex items-center">
-                        <svg
-                          className="h-6 w-6 mr-2"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                        Don'ts
-                      </h3>
-                      <ul className="space-y-3">
-                        {dosAndDonts.donts.map((item, index) => (
-                          <li key={index} className="flex items-start">
-                            <svg
-                              className="h-5 w-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                              />
-                            </svg>
-                            <span className="text-gray-700">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {/* Do's */}
+                      <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                        <h4 className="text-lg font-semibold text-green-800 mb-4 flex items-center">
+                          <svg
+                            className="h-6 w-6 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                          Do's
+                        </h4>
+                        <ul className="space-y-3">
+                          {dosAndDonts.users.dos.map((item, index) => (
+                            <li key={index} className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Don'ts */}
+                      <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+                        <h4 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                          <svg
+                            className="h-6 w-6 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                          Don'ts
+                        </h4>
+                        <ul className="space-y-3">
+                          {dosAndDonts.users.donts.map((item, index) => (
+                            <li key={index} className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* For Fundis */}
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                      For Fundis (The Repair Professionals)
+                    </h3>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {/* Do's */}
+                      <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                        <h4 className="text-lg font-semibold text-green-800 mb-4 flex items-center">
+                          <svg
+                            className="h-6 w-6 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                          Do's
+                        </h4>
+                        <ul className="space-y-3">
+                          {dosAndDonts.fundis.dos.map((item, index) => (
+                            <li key={index} className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Don'ts */}
+                      <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+                        <h4 className="text-lg font-semibold text-red-800 mb-4 flex items-center">
+                          <svg
+                            className="h-6 w-6 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                          Don'ts
+                        </h4>
+                        <ul className="space-y-3">
+                          {dosAndDonts.fundis.donts.map((item, index) => (
+                            <li key={index} className="flex items-start">
+                              <svg
+                                className="h-5 w-5 text-red-600 mr-2 mt-0.5 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span className="text-gray-700">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
 
                   <div className="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
-                    <h3 className="text-lg font-semibold text-blue-800 mb-3">Safety First</h3>
+                    <h3 className="text-lg font-semibold text-blue-800 mb-3">Working Together</h3>
                     <p className="text-gray-700">
-                      While we verify our service providers, we recommend always prioritizing your
-                      safety. If something doesn't feel right, trust your instincts. Report any
-                      suspicious behavior or safety concerns immediately through our complaint form
-                      or by contacting our support team.
+                      Following these guidelines helps create a positive experience for both users
+                      and fundis. Clear communication, mutual respect, and professional conduct are
+                      key to successful service delivery.
                     </p>
                   </div>
                 </div>
