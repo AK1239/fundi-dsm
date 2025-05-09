@@ -7,6 +7,7 @@ import FundiList from "./components/FundiList";
 import AboutUs from "./components/AboutUs";
 import FAQPage from "./components/FAQPage";
 import JoinUsPage from "./components/JoinUsPage";
+import ServicesPage from "./components/ServicesPage";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -59,6 +60,7 @@ const App = () => {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/join" element={<JoinUsPage />} />
+          <Route path="/services" element={<ServicesPage />} />
         </Routes>
       </div>
     </Router>
