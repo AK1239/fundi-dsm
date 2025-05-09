@@ -25,53 +25,95 @@ const FAQPage = () => {
   };
 
   const faqs = [
+    // For Users
     {
       id: 1,
-      question: "How do I find a service provider on FundiDSM?",
-      answer:
-        "You can search for service providers by category, location, or specific skills. Browse through our directory, view profiles, ratings, and reviews to find the right professional for your needs.",
+      question: "How do I find a fundi?",
+      answer: "You can browse the directory by category (e.g., electrician, plumber, mechanic).",
+      userType: "user",
     },
     {
       id: 2,
-      question: "How do I know if a fundi is reliable?",
+      question: "How can I contact a repairman or handyman?",
       answer:
-        "All fundis on our platform are verified and rated by previous customers. You can check their reviews, ratings, qualification details, and work history to assess their reliability before contacting them.",
+        "Each listing on our website includes the phone number and, in some cases, an email address of the repairman or handyman. You can contact them directly to discuss your needs and schedule an appointment.",
+      userType: "user",
     },
     {
       id: 3,
-      question: "What are the fees for using FundiDSM?",
+      question: "What should I do if I have a problem with a repairman I found on your site?",
       answer:
-        "Using FundiDSM to find and contact service providers is completely free for customers. Service providers pay a small subscription fee to be listed on our platform.",
+        "If you encounter any issues with a repairman or handyman, please contact us immediately. We take customer feedback seriously and will investigate the matter to ensure that our listings maintain a high standard of service.",
+      userType: "user",
     },
     {
       id: 4,
-      question: "How do I join as a service provider?",
+      question: "Is there a fee to use your website?",
       answer:
-        "To join as a service provider, click on the 'Join as a Fundi' button, complete the registration form, verify your identity, and submit your qualifications and experience for review.",
+        "No, our website is completely free to use. You can search for and contact repairmen and handymen without any charges.",
+      userType: "user",
     },
     {
       id: 5,
-      question: "Can I book a service provider directly through the platform?",
+      question: "Can I leave a review for a repairman or handyman?",
       answer:
-        "Currently, FundiDSM facilitates connection between customers and service providers. You can contact professionals directly through the contact information provided on their profiles.",
+        "Yes, we encourage our users to leave reviews. This helps other customers make informed decisions and allows us to maintain the quality of our listings.",
+      userType: "user",
     },
     {
       id: 6,
-      question: "What areas does FundiDSM cover?",
+      question: "What types of services can I find on your website?",
       answer:
-        "We currently operate in Dar es Salaam, with plans to expand to other major cities in Tanzania soon.",
+        "Our website features a wide range of services, including plumbing, electrical work, carpentry, painting, and general handyman services and much more.",
+      userType: "user",
     },
     {
       id: 7,
-      question: "How can I leave a review for a service provider?",
+      question: "How quickly can I expect a response from a repairman?",
       answer:
-        "After receiving service, you can visit the provider's profile and submit your review and rating to help other customers make informed decisions.",
+        "Response times may vary depending on the repairman's availability and workload. However, most professionals strive to respond within 24 hours. If you do not receive a response, we recommend following up with them directly.",
+      userType: "user",
     },
+
+    // For Fundis
     {
       id: 8,
-      question: "Is there a guarantee on the services provided?",
+      question: "How do I get listed in the directory?",
+      answer: "Go to the registration page and register with our website.",
+      userType: "fundi",
+    },
+    {
+      id: 9,
+      question: "Is there a fee to be listed in the directory?",
+      answer: "No, it's for free.",
+      userType: "fundi",
+    },
+    {
+      id: 10,
+      question: "What information should I include in my profile?",
       answer:
-        "While FundiDSM vets all service providers, we don't directly guarantee their work. However, our rating system encourages quality service, and we take customer complaints seriously to maintain high standards on our platform.",
+        "You should include detailed information about your skills, services offered, years of experience, areas you serve, contact details, and any relevant qualifications or certifications. High-quality photos of your work can also be beneficial.",
+      userType: "fundi",
+    },
+    {
+      id: 11,
+      question: "How will I be contacted by potential clients?",
+      answer:
+        "Users will typically contact you directly using the contact information you provide in your profile.",
+      userType: "fundi",
+    },
+    {
+      id: 12,
+      question: "Can I update my profile information?",
+      answer: "Yes, just email us and give us your changes and we will update for you.",
+      userType: "fundi",
+    },
+    {
+      id: 13,
+      question: "What if I receive inappropriate inquiries?",
+      answer:
+        "Please report any inappropriate or spam inquiries to us at fundidsm@gmail.com. We are committed to maintaining a professional and respectful environment.",
+      userType: "fundi",
     },
   ];
 
@@ -164,13 +206,146 @@ const FAQPage = () => {
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">
                     Frequently Asked Questions
                   </h2>
+
+                  {/* For Users */}
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">For Users</h3>
+                  <div className="space-y-6 mb-10">
+                    <div className="border-b border-gray-200 pb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        How do I find a fundi?
+                      </h4>
+                      <p className="text-gray-700">
+                        You can browse the directory by category (e.g., electrician, plumber,
+                        mechanic).
+                      </p>
+                    </div>
+
+                    <div className="border-b border-gray-200 pb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        How can I contact a repairman or handyman?
+                      </h4>
+                      <p className="text-gray-700">
+                        Each listing on our website includes the phone number and, in some cases, an
+                        email address of the repairman or handyman. You can contact them directly to
+                        discuss your needs and schedule an appointment.
+                      </p>
+                    </div>
+
+                    <div className="border-b border-gray-200 pb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        What should I do if I have a problem with a repairman I found on your site?
+                      </h4>
+                      <p className="text-gray-700">
+                        If you encounter any issues with a repairman or handyman, please contact us
+                        immediately. We take customer feedback seriously and will investigate the
+                        matter to ensure that our listings maintain a high standard of service.
+                      </p>
+                    </div>
+
+                    <div className="border-b border-gray-200 pb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        Is there a fee to use your website?
+                      </h4>
+                      <p className="text-gray-700">
+                        No, our website is completely free to use. You can search for and contact
+                        repairmen and handymen without any charges.
+                      </p>
+                    </div>
+
+                    <div className="border-b border-gray-200 pb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        Can I leave a review for a repairman or handyman?
+                      </h4>
+                      <p className="text-gray-700">
+                        Yes, we encourage our users to leave reviews. This helps other customers
+                        make informed decisions and allows us to maintain the quality of our
+                        listings.
+                      </p>
+                    </div>
+
+                    <div className="border-b border-gray-200 pb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        What types of services can I find on your website?
+                      </h4>
+                      <p className="text-gray-700">
+                        Our website features a wide range of services, including plumbing,
+                        electrical work, carpentry, painting, and general handyman services and much
+                        more.
+                      </p>
+                    </div>
+
+                    <div className="border-b border-gray-200 pb-6 last:border-0">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        How quickly can I expect a response from a repairman?
+                      </h4>
+                      <p className="text-gray-700">
+                        Response times may vary depending on the repairman's availability and
+                        workload. However, most professionals strive to respond within 24 hours. If
+                        you do not receive a response, we recommend following up with them directly.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* For Fundis */}
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">For Fundis</h3>
                   <div className="space-y-6">
-                    {faqs.map((faq) => (
-                      <div key={faq.id} className="border-b border-gray-200 pb-6 last:border-0">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{faq.question}</h3>
-                        <p className="text-gray-700">{faq.answer}</p>
-                      </div>
-                    ))}
+                    <div className="border-b border-gray-200 pb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        How do I get listed in the directory?
+                      </h4>
+                      <p className="text-gray-700">
+                        Go to the registration page and register with our website.
+                      </p>
+                    </div>
+
+                    <div className="border-b border-gray-200 pb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        Is there a fee to be listed in the directory?
+                      </h4>
+                      <p className="text-gray-700">No, it's for free.</p>
+                    </div>
+
+                    <div className="border-b border-gray-200 pb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        What information should I include in my profile?
+                      </h4>
+                      <p className="text-gray-700">
+                        You should include detailed information about your skills, services offered,
+                        years of experience, areas you serve, contact details, and any relevant
+                        qualifications or certifications. High-quality photos of your work can also
+                        be beneficial.
+                      </p>
+                    </div>
+
+                    <div className="border-b border-gray-200 pb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        How will I be contacted by potential clients?
+                      </h4>
+                      <p className="text-gray-700">
+                        Users will typically contact you directly using the contact information you
+                        provide in your profile.
+                      </p>
+                    </div>
+
+                    <div className="border-b border-gray-200 pb-6">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        Can I update my profile information?
+                      </h4>
+                      <p className="text-gray-700">
+                        Yes, just email us and give us your changes and we will update for you.
+                      </p>
+                    </div>
+
+                    <div className="border-b border-gray-200 pb-6 last:border-0">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        What if I receive inappropriate inquiries?
+                      </h4>
+                      <p className="text-gray-700">
+                        Please report any inappropriate or spam inquiries to us at
+                        fundidsm@gmail.com. We are committed to maintaining a professional and
+                        respectful environment.
+                      </p>
+                    </div>
                   </div>
                 </div>
               )}
@@ -186,113 +361,139 @@ const FAQPage = () => {
                         1. Acceptance of Terms
                       </h3>
                       <p>
-                        By accessing and using the FundiDSM platform, you agree to be bound by these
-                        Terms and Conditions, our Privacy Policy, and any other terms referenced
-                        herein. If you do not agree to these terms, please do not use our services.
+                        By accessing or using this fundi directory (the "Service"), you agree to be
+                        bound by these Terms and Conditions ("Terms"). If you do not agree to these
+                        Terms, please do not use the Service.
                       </p>
                     </section>
 
                     <section>
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        2. Platform Description
+                        2. Description of Service
                       </h3>
                       <p>
-                        FundiDSM is a platform that connects service seekers with skilled service
-                        providers ("Fundis") in Tanzania. We do not employ service providers, nor
-                        are we responsible for the work performed by them. Our role is limited to
-                        facilitating connections between users.
-                      </p>
-                    </section>
-
-                    <section>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">3. User Accounts</h3>
-                      <p>
-                        To access certain features of the platform, you must register and create an
-                        account. You are responsible for maintaining the confidentiality of your
-                        account information and for all activities that occur under your account.
-                        You agree to provide accurate and complete information during registration
-                        and to update your information to keep it accurate and current.
+                        This directory provides a platform for users to find and connect with
+                        various fundis (repairmen, technicians, mechanics, etc.). We do not directly
+                        employ or endorse any specific fundi listed on the Service.
                       </p>
                     </section>
 
                     <section>
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        4. Service Provider Terms
+                        3. User Responsibilities
+                      </h3>
+                      <ul className="list-disc pl-6 space-y-1">
+                        <li>
+                          Users are responsible for verifying the credentials, skills of any fundi
+                          they engage through the Service.
+                        </li>
+                        <li>
+                          Users are responsible for negotiating and agreeing on the terms of
+                          service, pricing, and payment directly with the fundi.
+                        </li>
+                        <li>
+                          Users agree to provide accurate and truthful information when contacting
+                          fundis through the Service.
+                        </li>
+                        <li>Users will use the Service in a lawful and respectful manner.</li>
+                      </ul>
+                    </section>
+
+                    <section>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                        4. Fundi Responsibilities
+                      </h3>
+                      <ul className="list-disc pl-6 space-y-1">
+                        <li>
+                          Fundis are responsible for the accuracy and completeness of their profile
+                          information, including their skills, services offered, and contact
+                          details.
+                        </li>
+                        <li>
+                          Fundis agree to respond to inquiries from users in a timely and
+                          professional manner.
+                        </li>
+                        <li>
+                          Fundis are responsible for obtaining any necessary licenses, permits, and
+                          insurance required to perform their services.
+                        </li>
+                        <li>
+                          Fundis will conduct themselves professionally and ethically when
+                          interacting with users contacted through the Service.
+                        </li>
+                      </ul>
+                    </section>
+
+                    <section>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                        5. Limitation of Liability
+                      </h3>
+                      <ul className="list-disc pl-6 space-y-1">
+                        <li>
+                          We provide the Service on an "as is" and "as available" basis. We make no
+                          warranties or representations, express or implied, regarding the quality,
+                          reliability, or suitability of the fundis listed on the Service.
+                        </li>
+                        <li>
+                          We are not responsible for any disputes, damages, losses, or injuries
+                          arising from interactions or agreements between users and fundis. Any
+                          agreement entered into is solely between the user and the fundi.
+                        </li>
+                        <li>
+                          To the maximum extent permitted by law, we shall not be liable for any
+                          indirect, incidental, special, consequential, or punitive damages arising
+                          out of or relating to your use of the Service.
+                        </li>
+                      </ul>
+                    </section>
+
+                    <section>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                        6. Intellectual Property
                       </h3>
                       <p>
-                        Service providers listed on FundiDSM are independent contractors. By listing
-                        on our platform, service providers agree to provide accurate information
-                        about their skills, qualifications, and services. Service providers are
-                        responsible for the quality of their work and for resolving any disputes
-                        with customers.
+                        The content and design of this directory are owned by us and are protected
+                        by copyright and other intellectual property laws. You may not reproduce,
+                        modify, distribute, or display any part of the Service without our prior
+                        written consent.
+                      </p>
+                    </section>
+
+                    <section>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">7. Termination</h3>
+                      <p>
+                        We reserve the right to suspend or terminate access to the Service for any
+                        user or fundi who violates these Terms or engages in conduct that we deem
+                        harmful to the Service or its users.
+                      </p>
+                    </section>
+
+                    <section>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">8. Governing Law</h3>
+                      <p>
+                        These Terms shall be governed by and construed in accordance with the laws
+                        of Tanzania. Any disputes arising under or in connection with these Terms
+                        shall be subject to the exclusive jurisdiction of the courts of Tanzania.
                       </p>
                     </section>
 
                     <section>
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        5. Customer Terms
+                        9. Modifications to Terms
                       </h3>
                       <p>
-                        Customers using FundiDSM to find service providers agree to provide accurate
-                        information when requesting services. Customers are responsible for
-                        verifying the identity and qualifications of service providers before
-                        engaging their services. Payment and service agreements are made directly
-                        between customers and service providers, without involvement from FundiDSM.
+                        We reserve the right to modify these Terms at any time without prior notice.
+                        Any changes will be effective immediately upon posting on the Service. Your
+                        continued use of the Service after the posting of revised Terms constitutes
+                        your acceptance of the changes.
                       </p>
                     </section>
 
                     <section>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        6. Reviews and Ratings
-                      </h3>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">10. Contact Us</h3>
                       <p>
-                        Users may submit reviews and ratings of service providers. These should be
-                        honest, accurate, and based on personal experience. FundiDSM reserves the
-                        right to remove reviews that contain offensive language, are fraudulent, or
-                        violate our community guidelines.
-                      </p>
-                    </section>
-
-                    <section>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        7. Limitation of Liability
-                      </h3>
-                      <p>
-                        FundiDSM is not liable for any disputes, damages, or issues arising from
-                        interactions between customers and service providers. We do not guarantee
-                        the quality of services provided by Fundis listed on our platform. Use of
-                        any service provider's services is at the customer's own risk.
-                      </p>
-                    </section>
-
-                    <section>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        8. Modifications to Terms
-                      </h3>
-                      <p>
-                        FundiDSM reserves the right to modify these Terms and Conditions at any
-                        time. Changes will be effective immediately upon posting on the platform.
-                        Continued use of the platform after changes constitutes acceptance of the
-                        modified terms.
-                      </p>
-                    </section>
-
-                    <section>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">9. Governing Law</h3>
-                      <p>
-                        These Terms and Conditions are governed by the laws of Tanzania. Any
-                        disputes arising from these terms will be subject to the exclusive
-                        jurisdiction of the courts of Tanzania.
-                      </p>
-                    </section>
-
-                    <section>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        10. Contact Information
-                      </h3>
-                      <p>
-                        For questions about these Terms and Conditions, please contact us at
-                        info@fundidsm.com or through the contact form on our website.
+                        If you have any questions about these Terms, please contact us at
+                        fundidsm@gmail.com
                       </p>
                     </section>
                   </div>
