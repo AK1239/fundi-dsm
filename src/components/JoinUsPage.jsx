@@ -576,9 +576,9 @@ const JoinUsPage = () => {
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <div className="flex items-center mb-4">
                     <img
-                      src="https://randomuser.me/api/portraits/men/32.jpg"
+                      src="/customer1.jpeg"
                       alt="Ushuhuda"
-                      className="w-12 h-12 rounded-full mr-4"
+                      className="w-12 h-12 rounded-full mr-4 object-cover"
                     />
                     <div>
                       <h4 className="font-semibold text-gray-900">John Mbwambo</h4>
@@ -594,9 +594,9 @@ const JoinUsPage = () => {
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <div className="flex items-center mb-4">
                     <img
-                      src="https://randomuser.me/api/portraits/women/44.jpg"
+                      src="/customer2.webp"
                       alt="Ushuhuda"
-                      className="w-12 h-12 rounded-full mr-4"
+                      className="w-12 h-12 rounded-full mr-4 object-cover"
                     />
                     <div>
                       <h4 className="font-semibold text-gray-900">Grace Mwakasege</h4>
@@ -612,9 +612,9 @@ const JoinUsPage = () => {
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <div className="flex items-center mb-4">
                     <img
-                      src="https://randomuser.me/api/portraits/men/67.jpg"
+                      src="/customer3.jpeg"
                       alt="Ushuhuda"
-                      className="w-12 h-12 rounded-full mr-4"
+                      className="w-12 h-12 rounded-full mr-4 object-cover"
                     />
                     <div>
                       <h4 className="font-semibold text-gray-900">Emanuel Kiswaga</h4>
