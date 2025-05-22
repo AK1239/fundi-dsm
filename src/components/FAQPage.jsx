@@ -4,25 +4,8 @@ import Footer from "./Footer";
 
 const FAQPage = () => {
   const [activeTab, setActiveTab] = useState("faq");
-  const [complaintName, setComplaintName] = useState("");
-  const [complaintEmail, setComplaintEmail] = useState("");
-  const [complaintSubject, setComplaintSubject] = useState("");
-  const [complaintMessage, setComplaintMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
-  const handleComplaintSubmit = (e) => {
-    e.preventDefault();
-    // In a real application, you would send this data to a server
-    console.log({ complaintName, complaintEmail, complaintSubject, complaintMessage });
-    setSubmitted(true);
-    // Reset form after submission
-    setComplaintName("");
-    setComplaintEmail("");
-    setComplaintSubject("");
-    setComplaintMessage("");
-    // Reset submission status after 3 seconds
-    setTimeout(() => setSubmitted(false), 3000);
-  };
+  const [submitted, setSubmitted] = useState(false);
 
   const faqs = [
     // For Users
@@ -166,8 +149,7 @@ const FAQPage = () => {
           <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16 px-8 rounded-xl mb-12 shadow-md">
             <h1 className="text-4xl font-bold mb-4">Help Center</h1>
             <p className="text-xl opacity-90 max-w-3xl">
-              Find answers to common questions, submit complaints, and learn about our terms and
-              best practices
+              Find answers to common questions, and learn about our terms and best practices
             </p>
           </section>
 
@@ -195,16 +177,7 @@ const FAQPage = () => {
                 >
                   Terms & Conditions
                 </button>
-                <button
-                  onClick={() => setActiveTab("complaints")}
-                  className={`py-4 px-6 text-center font-medium cursor-pointer ${
-                    activeTab === "complaints"
-                      ? "text-blue-600 border-b-2 border-blue-600"
-                      : "text-gray-500 hover:text-blue-600 hover:border-blue-600"
-                  }`}
-                >
-                  Submit a Complaint
-                </button>
+
                 <button
                   onClick={() => setActiveTab("dosdonts")}
                   className={`py-4 px-6 text-center font-medium cursor-pointer ${
@@ -525,131 +498,6 @@ const FAQPage = () => {
                         fundidsm@gmail.com
                       </p>
                     </section>
-                  </div>
-                </div>
-              )}
-
-              {/* Complaints Form */}
-              {activeTab === "complaints" && (
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Submit a Complaint</h2>
-
-                  <p className="text-gray-700 mb-6">
-                    If you've experienced issues with a service provider or have concerns about our
-                    platform, please fill out the form below. We take all complaints seriously and
-                    will respond within 48 hours.
-                  </p>
-
-                  {submitted ? (
-                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
-                      <p>
-                        Thank you for your feedback. We will review your complaint and get back to
-                        you shortly.
-                      </p>
-                    </div>
-                  ) : null}
-
-                  <form onSubmit={handleComplaintSubmit} className="space-y-6">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        value={complaintName}
-                        onChange={(e) => setComplaintName(e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Your Email
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        value={complaintEmail}
-                        onChange={(e) => setComplaintEmail(e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="subject"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Subject
-                      </label>
-                      <input
-                        type="text"
-                        id="subject"
-                        value={complaintSubject}
-                        onChange={(e) => setComplaintSubject(e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Your Complaint
-                      </label>
-                      <textarea
-                        id="message"
-                        rows="6"
-                        value={complaintMessage}
-                        onChange={(e) => setComplaintMessage(e.target.value)}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required
-                      ></textarea>
-                    </div>
-
-                    <div>
-                      <button
-                        type="submit"
-                        className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors cursor-pointer"
-                      >
-                        Submit Complaint
-                      </button>
-                    </div>
-                  </form>
-
-                  <div className="mt-8 border-t border-gray-200 pt-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                      Other Ways to Contact Us
-                    </h3>
-                    <div className="space-y-3">
-                      <div className="flex items-start">
-                        <svg
-                          className="h-6 w-6 text-gray-500 mr-2"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={1.5}
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                          />
-                        </svg>
-                        <span className="text-gray-700">Email: fundidsm@gmail.com</span>
-                      </div>
-                    </div>
                   </div>
                 </div>
               )}

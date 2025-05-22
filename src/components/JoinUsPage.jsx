@@ -575,11 +575,6 @@ const JoinUsPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <div className="flex items-center mb-4">
-                    <img
-                      src="/customer1.jpeg"
-                      alt="Ushuhuda"
-                      className="w-12 h-12 rounded-full mr-4 object-cover"
-                    />
                     <div>
                       <h4 className="font-semibold text-gray-900">John Mbwambo</h4>
                       <p className="text-gray-600 text-sm">Fundi Umeme, Kinondoni</p>
@@ -593,11 +588,6 @@ const JoinUsPage = () => {
 
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <div className="flex items-center mb-4">
-                    <img
-                      src="/customer2.webp"
-                      alt="Ushuhuda"
-                      className="w-12 h-12 rounded-full mr-4 object-cover"
-                    />
                     <div>
                       <h4 className="font-semibold text-gray-900">Grace Mwakasege</h4>
                       <p className="text-gray-600 text-sm">Msafishaji Nyumba, Ilala</p>
@@ -611,11 +601,6 @@ const JoinUsPage = () => {
 
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <div className="flex items-center mb-4">
-                    <img
-                      src="/customer3.jpeg"
-                      alt="Ushuhuda"
-                      className="w-12 h-12 rounded-full mr-4 object-cover"
-                    />
                     <div>
                       <h4 className="font-semibold text-gray-900">Emanuel Kiswaga</h4>
                       <p className="text-gray-600 text-sm">Fundi Bomba, Temeke</p>
