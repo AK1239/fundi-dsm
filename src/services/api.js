@@ -2,7 +2,10 @@ import axios from "axios";
 
 // Create an axios instance with default config
 const apiClient = axios.create({
-  baseURL: process.env.VITE_API_URL || "http://localhost:5001/api",
+  baseURL:
+    process.env.NODE_ENV === "production"
+      ? "https://fundi-dsm.onrender.com/api"
+      : "http://localhost:5001/api",
   headers: {
     "Content-Type": "application/json",
   },
